@@ -80,6 +80,7 @@ class Spree::VendorAbility
 
   def apply_prototypes_permissions
     can :read, Spree::Prototype
+    can [:read, :admin], Spree::Prototype
   end
 
   def apply_shipment_permissions
