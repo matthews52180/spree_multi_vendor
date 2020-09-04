@@ -25,10 +25,15 @@ class Spree::VendorAbility
       apply_vendor_permissions
       apply_vendor_settings_permissions
       apply_state_changes_permissions
+      apply_user_permissions
     end
   end
 
   private
+
+  def apply_user_permissions
+    can :manage, Spree::User,  vendor_id: @vendor_ids
+  end
 
   def apply_classifications_permissions
     can :manage, Spree::Classification, product: { vendor_id: @vendor_ids }
